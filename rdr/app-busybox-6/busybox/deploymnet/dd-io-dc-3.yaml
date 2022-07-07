@@ -21,7 +21,7 @@ spec:
         - -c
         - /run-io.sh
         image: quay.io/prsurve/busybox:main
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: busybox
         volumeMounts:
         - mountPath: /mnt/test
