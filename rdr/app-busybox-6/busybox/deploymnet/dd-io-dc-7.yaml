@@ -22,6 +22,9 @@ spec:
         - /run-io.sh
         image: quay.io/prsurve/busybox:main
         imagePullPolicy: Always
+        env:
+        - name: NAMESPACE_WA
+          value: "busybox-workloads-6"
         name: busybox
         volumeMounts:
         - mountPath: /mnt/test

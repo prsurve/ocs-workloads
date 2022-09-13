@@ -23,6 +23,9 @@ spec:
         image: quay.io/prsurve/busybox:main
         imagePullPolicy: Always
         name: busybox
+        env:
+        - name: NAMESPACE_WA
+          value: "busybox-workloads-6"
         volumeMounts:
         - mountPath: /mnt/test
           name: mypvc
