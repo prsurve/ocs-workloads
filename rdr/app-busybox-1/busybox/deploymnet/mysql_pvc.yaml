@@ -7,8 +7,8 @@ metadata:
     appname: busybox
 spec:
   accessModes:
-  - ReadWriteOnce
-  storageClassName: ocs-storagecluster-ceph-rbd
+  - ReadWriteMany
+  storageClassName: ocs-storagecluster-cephfs
   resources:
     requests:
       storage: 25G
