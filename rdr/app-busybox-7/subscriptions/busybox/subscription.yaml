@@ -4,12 +4,12 @@ kind: Subscription
 metadata:
   annotations:
     apps.open-cluster-management.io/github-branch: bz_repro
-    apps.open-cluster-management.io/github-path: rdr/app-busybox-4/busybox
+    apps.open-cluster-management.io/github-path: rdr/app-busybox-7/busybox
   labels:
     app: busybox-sample
   name: busybox-sub
 spec:
-    channel: ramen-busybox-4/ramen-gitops
+    channel: ramen-busybox-7/ramen-gitops
     placement:
       placementRef:
         kind: PlacementRule
