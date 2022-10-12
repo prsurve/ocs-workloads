@@ -1,7 +1,7 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: busybox-6
+  name: busybox-7
 spec:
   componentKinds:
   - group: apps.open-cluster-management.io
