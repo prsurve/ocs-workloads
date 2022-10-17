@@ -11,7 +11,7 @@ spec:
     name: odr-policy-east-west-rpo-5m
   placementRef:
     kind: PlacementRule
-    name: busybox-placement-1
+    name: multi-sub-busybox-placement-1
   pvcSelector:
     matchLabels:
       appname: busybox
