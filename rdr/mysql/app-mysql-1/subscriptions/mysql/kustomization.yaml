@@ -1,7 +1,7 @@
 namespace: mysql-workloads-1
 resources:
 - namespace.yaml
-- placementrule.yaml
-- subscription.yaml
-- drpc.yaml
+- placementrule_1.yaml
+- subscription_1.yaml
+- drpc_1.yaml
 - app.yaml
