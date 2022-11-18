@@ -6,7 +6,7 @@ metadata:
   labels:
     app: busybox-sample
 spec:
-  preferredCluster: "prsurve-vm-d"
+  preferredCluster: "prsurve-r-c1"
   drPolicyRef:
     name: odr-policy-east-west-rpo-10m
   placementRef:
