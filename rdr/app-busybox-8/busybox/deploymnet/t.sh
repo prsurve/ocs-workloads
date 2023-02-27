@@ -67,13 +67,13 @@ metadata:
   labels:
     snapshot: bz
 spec:
-  storageClassName: ocs-storagecluster-cephfs
+  storageClassName: ocs-storagecluster-ceph-rbd
   dataSource:
     name: $i
     kind: VolumeSnapshot
     apiGroup: snapshot.storage.k8s.io
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 50Gi
