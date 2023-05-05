@@ -6,9 +6,9 @@ metadata:
   labels:
     app: busybox-sample
 spec:
-  preferredCluster: "vmware-dccp-one"
+  preferredCluster: "prsurve-vm-d"
   drPolicyRef:
-    name: odr-policy-east-west-rpo-5m
+    name: drpolicy-15m
   placementRef:
     kind: PlacementRule
     name: busybox-placement
