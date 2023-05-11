@@ -8,7 +8,7 @@ metadata:
 spec:
   preferredCluster: "prsurve-c1"
   drPolicyRef:
-    name: odr-policy-east-west-rpo-5m
+    name: drpolicy-5m
   placementRef:
     kind: PlacementRule
     name: busybox-placement
