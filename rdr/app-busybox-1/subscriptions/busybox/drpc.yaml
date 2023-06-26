@@ -6,12 +6,14 @@ metadata:
   labels:
     app: busybox-sample
 spec:
-  preferredCluster: "prsurve-c1"
+  preferredCluster: "prsurve-vm-d"
   drPolicyRef:
     name: drpolicy-5m
   placementRef:
-    kind: PlacementRule
-    name: busybox-placement
+      apiVersion: cluster.open-cluster-management.io/v1beta1
+      kind: Placement
+      name: app-busybox-1-rbd-placement-1
+      namespace: busybox-workloads-1-rbd
   pvcSelector:
     matchLabels:
-      appname: busybox
+      appname: busybox_app1
