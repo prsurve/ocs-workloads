@@ -20,7 +20,7 @@ spec:
         - sh
         - -c
         - /run-io.sh
-        image: quay.io/prsurve/busybox:test
+        image: quay.io/prsurve/busybox:latest
         imagePullPolicy: Always
         name: busybox
         env:
