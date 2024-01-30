@@ -6,7 +6,7 @@ metadata:
   name: dd-io-pvc-7
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   resources:
     requests:
       storage: 149Gi
