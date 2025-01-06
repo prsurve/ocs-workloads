@@ -31,6 +31,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.uid
+        - name: GPG_PASSPHRASE
+          value: ocsqe@123
+        - name: GNUPGHOME
+          value: /tmp/.gnupg
         name: busybox
         volumeMounts:
         - mountPath: /mnt/test
