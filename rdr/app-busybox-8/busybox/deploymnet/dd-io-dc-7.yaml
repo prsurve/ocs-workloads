@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     appname: dd-io-7
+    workloadpattern: simple_io
   name: dd-io-7
 spec:
   selector:
