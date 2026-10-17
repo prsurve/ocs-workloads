@@ -1,0 +1,10 @@
+# Settings for the ManifestLens GitHub Action (https://github.com/marketplace/actions/manifestlens).
+# Order of precedence: built-in defaults < this file < inputs in the workflow.
+version: 1
+
+# Fail only on errors (privileged containers, running as root). Warnings and info are reported.
+fail-on: error
+
+severity-overrides:
+  # These are test workloads, so a single replica is intended.
+  single-replica: off

@@ -1,0 +1,38 @@
+name: ManifestLens
+
+# Checks the Kubernetes manifests in this repository for risky settings.
+# Trial run: mode is "report", so findings are shown but never fail the build.
+on:
+  pull_request:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write # lets the action post one summary comment on the pull request
+
+concurrency:
+  group: manifestlens-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: lens
+        uses: prsurve/manifestlens@v1
+        with:
+          label: ocs-workloads
+          mode: report # change to "enforce" to fail the build on errors
+
+      - name: Show the result
+        if: always()
+        run: |
+          echo "result:   ${{ steps.lens.outputs.result }}"
+          echo "errors:   ${{ steps.lens.outputs.errors }}"
+          echo "warnings: ${{ steps.lens.outputs.warnings }}"
+          echo "files:    ${{ steps.lens.outputs.files-checked }}"
