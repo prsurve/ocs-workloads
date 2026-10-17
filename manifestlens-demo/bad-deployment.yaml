@@ -1,0 +1,21 @@
+# Deliberately bad, only to see what the ManifestLens action reports on a pull request.
+# Delete this folder when you are done.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: manifestlens-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: manifestlens-demo
+  template:
+    metadata:
+      labels:
+        app: manifestlens-demo
+    spec:
+      containers:
+        - name: demo
+          image: nginx
+          securityContext:
+            privileged: true

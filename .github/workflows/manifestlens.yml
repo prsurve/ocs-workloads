@@ -1,7 +1,8 @@
 name: ManifestLens
 
-# Checks the Kubernetes manifests in this repository for risky settings.
-# Trial run: mode is "report", so findings are shown but never fail the build.
+# Two jobs, to show the two ways to use the action:
+#   everything: judges every manifest in the repository, but only reports (never fails).
+#   only-new:   judges only what this pull request introduces, and fails the build on a warning.
 on:
   pull_request:
     paths:
@@ -11,28 +12,30 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write # lets the action post one summary comment on the pull request
+  pull-requests: write # lets the action post its pull request comments
 
 concurrency:
   group: manifestlens-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  manifests:
+  everything:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-
-      - id: lens
-        uses: prsurve/manifestlens@v1
+      - uses: prsurve/manifestlens@v1
         with:
-          label: ocs-workloads
-          mode: report # change to "enforce" to fail the build on errors
+          label: everything
+          mode: report
 
-      - name: Show the result
-        if: always()
-        run: |
-          echo "result:   ${{ steps.lens.outputs.result }}"
-          echo "errors:   ${{ steps.lens.outputs.errors }}"
-          echo "warnings: ${{ steps.lens.outputs.warnings }}"
-          echo "files:    ${{ steps.lens.outputs.files-checked }}"
+  only-new:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # scope: new needs the base commit
+      - uses: prsurve/manifestlens@v1
+        with:
+          label: only-new
+          scope: new
+          fail-on: warning # overrides fail-on: error from .github/manifestlens.yml
